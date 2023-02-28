@@ -1,0 +1,7 @@
+/* .mainDiv{
+  display: flex;
+    flex-direction: row-reverse;
+} */
+.active{
+  border-bottom: 2px solid #09c478 !important;
+}
