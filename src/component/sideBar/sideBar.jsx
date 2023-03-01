@@ -258,7 +258,7 @@ function SideBar() {
                 <span>Fullscreen</span>
               </a>
             </li>
-            <li
+            {/* <li
               id="menu-item-2116"
               class="menu-item menu-item-type-custom menu-item-object-custom menu-has-icon menu-item-2116"
             >
@@ -268,7 +268,7 @@ function SideBar() {
                   <span>Primary color</span>
                 </div>
               </a>
-            </li>
+            </li> */}
             <li
               id="menu-item-2117"
               class="menu-item menu-item-type-custom menu-item-object-custom menu-has-icon menu-item-2117"
@@ -287,38 +287,22 @@ function SideBar() {
 
       <footer id="side-footer" class="site-sidebar-footer">
         <p class="has-small-font-size">
-          <a
-            href="http://music.flatfull.com/musicon/category/uncategorized/"
-            data-type="category"
-            data-id="1"
-          >
+          <a href="/" data-type="category" data-id="1">
             Blog
           </a>{" "}
-          <a
-            href="http://music.flatfull.com/musicon/pricing-plans/"
-            data-type="page"
-            data-id="3079"
-          >
+          <a href="/" data-type="page" data-id="3079">
             Pricing Plans
           </a>{" "}
-          <a
-            href="http://music.flatfull.com/musicon/privacy-policy/"
-            data-type="page"
-            data-id="9"
-          >
+          <a href="/" data-type="page" data-id="9">
             Privacy
           </a>{" "}
-          <a
-            href="http://music.flatfull.com/musicon/terms/"
-            data-type="page"
-            data-id="1168"
-          >
+          <a href="/" data-type="page" data-id="1168">
             Terms
           </a>
         </p>
 
         <p class="has-text-color" style={{ color: "#888888", fontSize: 12 }}>
-          @2022 Music Theme
+          @2023 Awaz
         </p>
 
         <div

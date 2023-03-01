@@ -45,6 +45,7 @@ function AddArtist() {
     axios(config)
       .then(function (response) {
         console.log(response.data);
+        window.location.href = "/labeldashboard";
       })
       .catch(function (error) {
         console.log(error);
@@ -60,7 +61,7 @@ function AddArtist() {
         >
           <div className="flex-row">
             <div>
-              <h4>Enter Your Information If you are an Atist</h4>
+              <h4>Enter Your Information to add an Atist</h4>
               <div className="form-message"></div>
               <p>
                 <label>

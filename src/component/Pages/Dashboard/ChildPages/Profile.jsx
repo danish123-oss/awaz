@@ -1,11 +1,51 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 function Profile() {
-  let [userData, setUserData] = useState();
-  let cu = useSelector((store) => store.userSection);
-  console.log(localStorage.getItem("email"));
-  console.log(localStorage.getItem("role"));
+  // let [userData, setUserData] = useState();
+  let { handleSubmit, register, reset } = useForm();
+
+  // let cu = useSelector((store) => store.userSection);
+  const UpdateUser = (data) => {
+    var data = JSON.stringify({
+      usr_id: localStorage.getItem("usrid"),
+      usr_firstname: data.usr_full_name,
+      usr_lastname: data.usr_last_name,
+      usr_gender: data.usr_gender,
+      usr_primary_number: data.usr_pno,
+      usr_rol_id: 6,
+      usr_lng_id_fk: 0,
+      usr_profile_image_url: "string",
+      usr_uid_google: "string",
+      usr_uid_facebook: "string",
+      usr_signin_with_number: true,
+      usr_status: true,
+    });
+
+    var config = {
+      method: "put",
+      maxBodyLength: Infinity,
+      url: "https://api.devhelper.co.uk/Api/Users/Update",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setTimeout(() => {
+          localStorage.clear();
+          window.location.href = "/login";
+        }, 2000);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   return (
     <div className="entry-content sub-content" id="sub-ajax-content">
       <form
@@ -15,6 +55,7 @@ function Profile() {
         action=""
         method="post"
         encType="multipart/form-data"
+        onSubmit={handleSubmit(UpdateUser)}
       >
         <div className="flex-row">
           <div>
@@ -30,6 +71,7 @@ function Profile() {
                   name="first_name"
                   className="input"
                   required=""
+                  {...register("usr_full_name")}
                 />
               </p>
               <div className="sep" />
@@ -43,6 +85,7 @@ function Profile() {
                   name="last_name"
                   className="input"
                   required=""
+                  {...register("usr_last_name")}
                 />
               </p>
             </div>
@@ -72,6 +115,7 @@ function Profile() {
                 className="input"
                 defaultValue={localStorage.getItem("email")}
                 required=""
+                {...register("usr_email")}
               />
             </p>
             <p>
@@ -90,6 +134,7 @@ function Profile() {
                 name="url"
                 className="input"
                 defaultValue={localStorage.getItem("gender")}
+                {...register("usr_gender")}
               />
             </p>
             <p>
@@ -99,6 +144,7 @@ function Profile() {
                 name="url"
                 className="input"
                 defaultValue={localStorage.getItem("usrno")}
+                {...register("usr_pno")}
               />
             </p>
             <p className="separator">
@@ -119,9 +165,10 @@ function Profile() {
             <p>
               <input
                 type="submit"
+                // onClick={UpdateUser}
                 name="wp-submit"
                 className="button button-primary"
-                defaultValue="Update"
+                value={"Update"}
               />
             </p>
             <a href="/" className="btn-delete-account">

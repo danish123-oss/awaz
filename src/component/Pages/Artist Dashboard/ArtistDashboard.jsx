@@ -1,9 +1,10 @@
 import React from "react";
 // import { useEffect } from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AddArtist from "./ChildComponent/AddArtist";
 import Header from "./ChildComponent/Header";
 import ArtistDetails from "./ChildComponent/ArtistDetails";
+// import axios from "axios";
 const ArtistDashboard = () => {
   return (
     <div id="content" class="site-content">
